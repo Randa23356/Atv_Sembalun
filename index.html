@@ -1,101 +1,163 @@
-<!DOCTYPE html><html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Penyewaan ATV Sembalun</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
-<body class="bg-gray-50 text-gray-800" x-data="{ dark: false }" :class="{ 'dark': dark }"><!-- Sticky Navbar --><header class="bg-white dark:bg-gray-900 fixed top-0 w-full z-50 shadow-md">
-  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-    <h1 class="text-2xl font-bold text-blue-600 dark:text-white">ATV Sembalun</h1>
-    <nav>
-      <ul class="flex space-x-4 text-sm md:text-base">
-        <li><a href="#home" class="hover:text-blue-500 dark:text-white">Home</a></li>
-        <li><a href="#atv" class="hover:text-blue-500 dark:text-white">Daftar ATV</a></li>
-        <li><a href="#gallery" class="hover:text-blue-500 dark:text-white">Galeri</a></li>
-        <li><a href="#contact" class="hover:text-blue-500 dark:text-white">Kontak</a></li>
-      </ul>
-    </nav>
-    <button @click="dark = !dark" class="text-sm text-gray-700 dark:text-gray-300">🌞 / 🌙</button>
-  </div>
-</header><main class="pt-24 px-4 max-w-7xl mx-auto">
-  <!-- Hero Section -->
-  <section id="home" class="text-center py-10">
-    <h2 class="text-4xl font-bold mb-4">Selamat Datang di Penyewaan ATV Sembalun</h2>
-    <p class="text-lg mb-6">Nikmati petualangan seru mengelilingi alam Sembalun dengan ATV berkualitas</p>
-    <a href="#atv" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded shadow">Lihat ATV</a>
-  </section>  <!-- ATV List -->  <section id="atv" class="py-10">
-    <h2 class="text-3xl font-semibold text-center mb-8">Daftar ATV Tersedia</h2>
-    <div id="atv-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
-  </section>  <!-- Galeri -->  <section id="gallery" class="py-10">
-    <h2 class="text-3xl font-semibold text-center mb-8">Galeri Foto</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-      <img src="https://source.unsplash.com/400x300/?atv,nature" alt="Foto 1" class="rounded shadow cursor-pointer" @click="Swal.fire({ imageUrl: 'https://source.unsplash.com/400x300/?atv,nature', imageAlt: 'Foto 1' })">
-      <img src="https://source.unsplash.com/400x300/?mountain,ride" alt="Foto 2" class="rounded shadow cursor-pointer" @click="Swal.fire({ imageUrl: 'https://source.unsplash.com/400x300/?mountain,ride', imageAlt: 'Foto 2' })">
-      <img src="https://source.unsplash.com/400x300/?adventure,trail" alt="Foto 3" class="rounded shadow cursor-pointer" @click="Swal.fire({ imageUrl: 'https://source.unsplash.com/400x300/?adventure,trail', imageAlt: 'Foto 3' })">
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penyewaan ATV Sembalun</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    .dark-mode {
+        background-color: #1a202c;
+        color: white;
+    }
+    .dark-mode .bg-white {
+        background-color: #2d3748;
+    }
+    .dark-mode .text-gray-800 {
+        color: #f7fafc;
+    }
+</style>
+
+</head><body class="bg-gray-50 text-gray-800 transition duration-300">
+    <header class="bg-gradient-to-r from-blue-800 to-blue-500 text-white sticky top-0 z-50 shadow">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold">ATV Sembalun</h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-yellow-300">Home</a>
+                <a href="#atv" class="hover:text-yellow-300">ATV</a>
+                <a href="#gallery" class="hover:text-yellow-300">Galeri</a>
+                <a href="#testimoni" class="hover:text-yellow-300">Testimoni</a>
+                <a href="#chart" class="hover:text-yellow-300">Statistik</a>
+                <a href="#faq" class="hover:text-yellow-300">FAQ</a>
+                <a href="#contact" class="hover:text-yellow-300">Kontak</a>
+            </nav>
+            <button id="toggleDark" class="ml-4 bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">🌓</button>
+        </div>
+    </header><main class="max-w-7xl mx-auto p-4">
+    <section id="home" class="text-center py-12">
+        <h2 class="text-4xl font-bold mb-4">Selamat Datang di ATV Sembalun</h2>
+        <p class="text-lg mb-4 max-w-xl mx-auto">Nikmati petualangan seru menjelajahi keindahan alam Sembalun dengan ATV kami yang tangguh dan terpercaya.</p>
+        <img src="https://images.unsplash.com/photo-1615485733373-103c6d56c47f" alt="ATV Adventure" class="w-full max-w-2xl mx-auto rounded shadow-lg">
+    </section><section id="atv" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Pilihan ATV Kami</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-xl font-bold">ATV Trail 150cc</h3>
+            <p class="text-sm mt-2">Cocok untuk medan ringan dan menengah, nyaman digunakan untuk pemula.</p>
+            <p class="mt-2 font-semibold text-blue-600">Rp 200.000 / jam</p>
+            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Trail 150cc" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-xl font-bold">ATV Adventure 250cc</h3>
+            <p class="text-sm mt-2">Didesain untuk petualangan ekstrem, sangat cocok untuk tantangan medan berbatu.</p>
+            <p class="mt-2 font-semibold text-blue-600">Rp 300.000 / jam</p>
+            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Adventure 250cc" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-xl font-bold">ATV Family 2 Seater</h3>
+            <p class="text-sm mt-2">Ideal untuk berdua, bisa digunakan untuk keluarga atau pasangan.</p>
+            <p class="mt-2 font-semibold text-blue-600">Rp 400.000 / jam</p>
+            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Family 2 Seater" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        </div>
     </div>
-  </section>  <!-- Kontak -->  <section id="contact" class="py-10">
-    <h2 class="text-3xl font-semibold text-center mb-8">Hubungi Kami</h2>
-    <form id="contact-form" class="max-w-xl mx-auto space-y-4">
-      <input type="text" name="name" placeholder="Nama" class="w-full border p-3 rounded" required>
-      <input type="email" name="email" placeholder="Email" class="w-full border p-3 rounded" required>
-      <textarea name="message" placeholder="Pesan" rows="5" class="w-full border p-3 rounded" required></textarea>
-      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">Kirim Pesan</button>
-    </form>
-  </section>
-</main><!-- WhatsApp Floating Button --><a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg">
-  💬
-</a><script>
-  const atvList = [
-    { id: 1, nama: "ATV Trail 150cc", deskripsi: "Cocok untuk pemula, ringan dan nyaman.", harga: 200000 },
-    { id: 2, nama: "ATV Sport 250cc", deskripsi: "Lebih bertenaga untuk jalur menantang.", harga: 300000 },
-    { id: 3, nama: "ATV Family 2-Seater", deskripsi: "Bisa boncengan untuk keluarga.", harga: 350000 }
-  ];
+</section>
 
-  const listContainer = document.getElementById("atv-list");
-  atvList.forEach(atv => {
-    const el = document.createElement("div");
-    el.className = "p-4 bg-white dark:bg-gray-800 rounded shadow hover:scale-105 transform transition duration-300";
-    el.innerHTML = `
-      <h3 class="text-xl font-bold mb-2">${atv.nama}</h3>
-      <p class="mb-2">${atv.deskripsi}</p>
-      <p class="font-semibold text-blue-600 dark:text-blue-300">Rp ${atv.harga.toLocaleString()}</p>
-      <button onclick="order('${atv.nama}')" class="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Pesan</button>
-    `;
-    listContainer.appendChild(el);
-  });
+<section id="gallery" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Galeri</h2>
+    <div class="grid gap-4 md:grid-cols-3">
+        <img src="https://images.unsplash.com/photo-1615473992474-f0ffdf97eb7e" class="rounded shadow">
+        <img src="https://images.unsplash.com/photo-1615462213503-bfcb09ffbe61" class="rounded shadow">
+        <img src="https://images.unsplash.com/photo-1589396975552-bdc5c0be1a3e" class="rounded shadow">
+    </div>
+</section>
 
-  function order(nama) {
-    Swal.fire({
-      title: 'Ingin memesan?',
-      text: `Kamu akan diarahkan ke WhatsApp untuk pesan ${nama}.`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Lanjutkan',
-    }).then(result => {
-      if(result.isConfirmed) {
-        window.open(`https://wa.me/6281234567890?text=Halo%20saya%20ingin%20memesan%20${encodeURIComponent(nama)}`, '_blank');
-      }
+<section id="testimoni" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Testimoni</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-white p-6 rounded shadow">
+            <p>"ATVnya mantap banget! Medannya keren dan pemandangannya luar biasa."</p>
+            <p class="text-yellow-400">★★★★★</p>
+            <p class="mt-2 text-sm">— Dedi, Mataram</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+            <p>"Bookingnya cepat, staffnya ramah, dan pengalaman tak terlupakan."</p>
+            <p class="text-yellow-400">★★★★☆</p>
+            <p class="mt-2 text-sm">— Rika, Lombok</p>
+        </div>
+    </div>
+</section>
+
+<section id="chart" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Statistik Penyewaan</h2>
+    <canvas id="chartAtv" class="w-full max-w-2xl mx-auto"></canvas>
+</section>
+
+<section id="faq" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">FAQ</h2>
+    <div class="space-y-4">
+        <details class="bg-white p-4 rounded shadow">
+            <summary class="font-semibold">Apakah perlu SIM untuk menyewa?</summary>
+            <p class="mt-2 text-sm">Tidak wajib, namun usia minimal penyewa adalah 17 tahun.</p>
+        </details>
+        <details class="bg-white p-4 rounded shadow">
+            <summary class="font-semibold">Apakah bisa booking via WhatsApp?</summary>
+            <p class="mt-2 text-sm">Ya, semua booking dilakukan melalui tombol pesan WhatsApp yang tersedia.</p>
+        </details>
+    </div>
+</section>
+
+<section id="contact" class="py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Kontak Kami</h2>
+    <div class="max-w-xl mx-auto">
+        <form id="contact-form" class="bg-white p-6 rounded shadow">
+            <input type="text" placeholder="Nama" class="w-full p-2 mb-4 border rounded">
+            <input type="email" placeholder="Email" class="w-full p-2 mb-4 border rounded">
+            <textarea placeholder="Pesan" class="w-full p-2 mb-4 border rounded"></textarea>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">Kirim</button>
+        </form>
+    </div>
+</section>
+
+</main><footer class="bg-gray-900 text-white text-center py-6 mt-12">
+    <p>&copy; 2025 Penyewaan ATV Sembalun. Dibuat dengan ❤️ oleh Tim Web.</p>
+</footer><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>
+    AOS.init();
+    document.getElementById("toggleDark").addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
     });
-  }
 
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    Swal.fire({
-      title: 'Terkirim!',
-      text: 'Pesan kamu sudah terkirim. Terima kasih!',
-      icon: 'success'
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Pesanmu telah terkirim! Kami akan menghubungi secepatnya.");
+        form.reset();
     });
-    this.reset();
-  });
-</script></body>
-</html>
+
+    const ctx = document.getElementById('chartAtv');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['ATV 150cc', 'ATV 250cc', 'ATV Family'],
+            datasets: [{
+                label: 'Jumlah Sewa Bulanan',
+                data: [12, 19, 7],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script></body></html>
