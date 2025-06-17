@@ -1,163 +1,255 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Penyewaan ATV Sembalun</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
-    .dark-mode {
-        background-color: #1a202c;
-        color: white;
-    }
-    .dark-mode .bg-white {
-        background-color: #2d3748;
-    }
-    .dark-mode .text-gray-800 {
-        color: #f7fafc;
-    }
-</style>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
 
-</head><body class="bg-gray-50 text-gray-800 transition duration-300">
-    <header class="bg-gradient-to-r from-blue-800 to-blue-500 text-white sticky top-0 z-50 shadow">
-        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold">ATV Sembalun</h1>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#home" class="hover:text-yellow-300">Home</a>
-                <a href="#atv" class="hover:text-yellow-300">ATV</a>
-                <a href="#gallery" class="hover:text-yellow-300">Galeri</a>
-                <a href="#testimoni" class="hover:text-yellow-300">Testimoni</a>
-                <a href="#chart" class="hover:text-yellow-300">Statistik</a>
-                <a href="#faq" class="hover:text-yellow-300">FAQ</a>
-                <a href="#contact" class="hover:text-yellow-300">Kontak</a>
-            </nav>
-            <button id="toggleDark" class="ml-4 bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">🌓</button>
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-[#122118] dark justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-[#122118] p-4 pb-2 justify-between">
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Sembalun ATV</h2>
+          <div class="flex w-12 items-center justify-end">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
+            >
+              <div class="text-white" data-icon="Moon" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+          </div>
         </div>
-    </header><main class="max-w-7xl mx-auto p-4">
-    <section id="home" class="text-center py-12">
-        <h2 class="text-4xl font-bold mb-4">Selamat Datang di ATV Sembalun</h2>
-        <p class="text-lg mb-4 max-w-xl mx-auto">Nikmati petualangan seru menjelajahi keindahan alam Sembalun dengan ATV kami yang tangguh dan terpercaya.</p>
-        <img src="https://images.unsplash.com/photo-1615485733373-103c6d56c47f" alt="ATV Adventure" class="w-full max-w-2xl mx-auto rounded shadow-lg">
-    </section><section id="atv" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">Pilihan ATV Kami</h2>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-white p-4 rounded shadow">
-            <h3 class="text-xl font-bold">ATV Trail 150cc</h3>
-            <p class="text-sm mt-2">Cocok untuk medan ringan dan menengah, nyaman digunakan untuk pemula.</p>
-            <p class="mt-2 font-semibold text-blue-600">Rp 200.000 / jam</p>
-            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Trail 150cc" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        <div class="@container">
+          <div class="@[480px]:p-4">
+            <div
+              class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
+              style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8b-T7rIS8bw1D00JRnhmtE7Yuslt8unDCP9_Wzl0Ja0NC_DLcF9S8Im23aAF--ifVX53oDBqpN5yX4lIPKO5GN3rtqj9172pO7ymV0lJ-zjSadFXTswuJQSgJVfgnQyhGb4xKcZGzr2RwLptT4eUP1TXRY7NPxJnVnAhZx091j_w1sU9K0bAGijvaY3nwqlELNytwWZ0C_2Rq1ccGphZcE_Z1BOtQ-VDpGShIymTc26jpkxg5-B5WANFBd_kVLsh3yZw4Ou4sea4");'
+            >
+              <div class="flex flex-col gap-2 text-center">
+                <h1
+                  class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                >
+                  Explore Sembalun with ATV
+                </h1>
+                <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                  Experience the thrill of riding through the stunning landscapes of Sembalun with our top-quality ATV rentals.
+                </h2>
+              </div>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+              >
+                <span class="truncate">Book Now</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-            <h3 class="text-xl font-bold">ATV Adventure 250cc</h3>
-            <p class="text-sm mt-2">Didesain untuk petualangan ekstrem, sangat cocok untuk tantangan medan berbatu.</p>
-            <p class="mt-2 font-semibold text-blue-600">Rp 300.000 / jam</p>
-            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Adventure 250cc" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our ATVs</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXDEz5tz5Sl5UvjQVdf-Ggsgx9TVyZJvLfU8OayTz2OJdiB32U215BDjcTAUcvWE8VIV8OYAtIrL9cJtfdWUBi5Iy7IdRlEjh216asXaXxzJGLbZ2rTcO-LW3DcTP7AC6Cr3qylRqo6Xa9oE8UW7wSvl3oU90c5PGl82U0yd3cAJjqhGPpmsuHlvUKzD1nSDB2dl2lACrdLuunJCH8mtjNigwoQrXMGfrWUJeW9kmbootqBL_QTMFbHnk5-HuMwiwWSAPXPAV_wnc");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">ATV 1</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Description of ATV 1</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhR-SKQzXmF8fnTeauNC4IsftRL-AIeIeZFG-3r17-sEqgeWSgx7112GKmocfMSkSLmfGXi8NX1-ZspYT9E6KCD1m6x3nB-F1eZh4QY03odD8UE24QjLxqncawAaTOcPkzshXpNM0wsuTMGXK4uuIAwNa4TeqOI6gdamvtmVvXxGha4ysmF-g75WVnPTURVDswgl2MqhvMhKdtIiRM_6fvZj0FHVswTc-rOwuNl-bFiiE_dgiMZ6pPHg3-ExtDbQmW7hRxtSJw5bQ");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">ATV 2</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Description of ATV 2</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCawsM0DmFY8pxJLLe-sY34lQmyXxhck-nOrJGuacuAwMLqAyCshMZHNCUjv_5br1GiwXh8VBUy9qPUQrqc0Btz4NSs1e4pNNNmxe05cbBBNMy-S5-SCXoRKQltCiF2-_Yx_lOdl3sLsQ7G56yEQLUKIRtQayOdKSYaUdqZa4wUA6uWhVZn41Bv4P5DI2RHTiwG4uMA6MmjJDVrxDBImhl_iJnfy4y7MVOMgx0yXSJFV4SGbewtNv0Dmps8PsMTkPpbK08fwrkpfL8");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">ATV 3</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Description of ATV 3</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-            <h3 class="text-xl font-bold">ATV Family 2 Seater</h3>
-            <p class="text-sm mt-2">Ideal untuk berdua, bisa digunakan untuk keluarga atau pasangan.</p>
-            <p class="mt-2 font-semibold text-blue-600">Rp 400.000 / jam</p>
-            <a href="https://wa.me/6281234567890?text=Halo, saya ingin menyewa ATV Family 2 Seater" class="mt-2 inline-block text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">Pesan via WhatsApp</a>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Gallery</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <div class="flex flex-col gap-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCy4oH63d9JG_12lr9_DjtmGzk5PEhzyoJKmxBFVqCCN4SyAx91IBCFRpKSi35bRO0FtxhguWvQAUyYXnj_N6EXr2IyDYGX-eVSHgrJEgCDKmgywfFs7rLgSDwD7rVmR-1iCra6RUUQw67RK-ca_hOmXasqS_226BO1AaVVN1h7UHQY-b9U1kfhmSezdSkclxi4B7mP60xM8aLWwsUEmoIH2OrkLIxlF7Rzwk1-YxAhPVACOOvyLa6KvlV4gru9zT7ypBNwZkMC-lU");'
+            ></div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkP9ZdCVyhH6l6MNMFsD4WYWbgrT-5r_ee3I5gVIcY__h_eo1oPYkIHjpwK9QUE_vROlwKwTDAfEpXCtKS1eEnBt2lBpXvk1JaYqtrlhmBcdKD1PtclIRrGkanpLIfpcQf4Yn3Hmz6zNG9jPQXlXta1jpq8VeXegH9qdyy22b_6qaFoq4pyYOKIOpY4YFvFkD8BRKYnbU4zVml5Ohv2xfajd34Fe7Ip7owaliXufTc-a7wui5lbjXwxFJYzaSN58AOBSHBwFFShGI");'
+            ></div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzBkkgXUsP-SaE3xu90gRYEgvAUJPs7Pn4YagDnqnxdkw8nNnGc4HmhRKIWU-lWV1uu7Nb7WuR3H6VFwhq6kyfuGHs-dpok3t1ycXtjLxv085p4Rts_vxXf2tREcceQMuugfZMHFgmrVZjlwvMayZ5_8Y93k3uEvK4FUCMqt__GeAVSeETkeO_Oy_QGv8BptP60Z2TsCTgmZFxll_ZOb3gZ4ZgDTJexttuKYcYivfFAzCqQE-uEzlxlY9dokw9IFXKE_dg5TA7QKs");'
+            ></div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAht1IMDqsMNmU-QYXvtuRkO_neml_Q-_sZvyEgmpE6hvHKWJy7TPQImMmt1xA0ONWR6GaEW_UWdaYKNYeX5rc5yqftzNsx1PbHUzEBq0Ru6zCHIP7-Zd6wTKRFbBNEDie0EIDF5LFmd6STp0_Ez9WMoT_iT1XF5ChsdnSJtY-S8AQC8JrLYRLcfGvno0XqwiUdNvmiNppvGJITQQBl20xP723t0PQhaSIT-tYVJ9Mk924h7K6DCDWtGT1ypBtM9bDL6GBVW4s46C8");'
+            ></div>
+          </div>
         </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Testimonials</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFXal4qmklKYERGOKT4CKsDkAo0cU4uT59wRWZoCmySxmCjtN8vg-FePnt9b8KrcZ73t4adndn-bBFfnsdrP3uusq_w5iAjp0qTYCqeF8MZ7DbVrwttMlAAtPN4B0PE0UtcVA7HucoNFrOTcDogbensm35kiPXDf3skObBEAYGYaUmgVCwxHCGhyWNBjjsFlRrV3Vd8cBOL2Oyjay594IFL9Y404KNIcQLYSex-IZbALJIwd_abbaY6iPGMO3kG9ucngvg2COTB_8");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Amazing Experience</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">"The ATV ride was incredible! The views were breathtaking, and the staff was very helpful."</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnV6YQNp1Uz-WQ6oLI59MylBN_o7v7X9bJGGm6et3wJoG_gfZSpXh5wk1Bk90sgAXx2Wx9pZJnnjNwit6kwC6TyV9fbI0ed1k8-cUiCL_adWBSISBN87o9g9iK9J4ZnOU8NhGhKRmIzYgW1FravwKcb01-mk5-v77urKDngRksR2OEBjn-C4RtYh4eS2EOoqkcnAOA0s7BESDDBRk7LgAP8wbPoRcfhywP5FmwmlkSl1aFZbCxhfpJ1nt-w_21x6EMNGJ52qXJCtA");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Unforgettable Adventure</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">"I had an unforgettable adventure exploring Sembalun on an ATV. Highly recommend!"</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDi_v3jm7JfHpWxUVbW97p2JTDEbPL45KKmFAU4_LYZhNjsJLPohdIJWw83BzSTSqoexPOsVa8UqLl5d036MZ-D-jHlZXcVcbGaI93ygfTX8nMGYYeBfOw9Ee9Au5toMk2ZPLOwYFjkJ7qMs83sRzbXDcJZiu_VIeZzScdZLe9V-qxBOMvTqhUx7hKjNFV80673hExLBDaVGLBeeKf8SJPsxKdFkGkaFucYMsgnhNL3zUU6_bWSaSmOyhM_ox2U5IhnbVKaVQ9vqiU");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Best ATV Rental</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">
+                  "This is the best ATV rental service in Sembalun. The ATVs are well-maintained, and the guides are knowledgeable."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Rental Statistics</h2>
+        <div class="flex flex-wrap gap-4 p-4">
+          <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#366348]">
+            <p class="text-white text-base font-medium leading-normal">Total Rides</p>
+            <p class="text-white tracking-light text-2xl font-bold leading-tight">500+</p>
+          </div>
+          <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#366348]">
+            <p class="text-white text-base font-medium leading-normal">Happy Customers</p>
+            <p class="text-white tracking-light text-2xl font-bold leading-tight">400+</p>
+          </div>
+          <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#366348]">
+            <p class="text-white text-base font-medium leading-normal">Kilometers Covered</p>
+            <p class="text-white tracking-light text-2xl font-bold leading-tight">10000+</p>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Frequently Asked Questions</h2>
+        <div class="flex flex-col p-4 gap-3">
+          <details class="flex flex-col rounded-lg border border-[#366348] bg-[#122118] px-[15px] py-[7px] group" open="">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-white text-sm font-medium leading-normal">What is included in the rental?</p>
+              <div class="text-white group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#96c5a9] text-sm font-normal leading-normal pb-2">The rental includes the ATV, helmet, and a guided tour of Sembalun.</p>
+          </details>
+          <details class="flex flex-col rounded-lg border border-[#366348] bg-[#122118] px-[15px] py-[7px] group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-white text-sm font-medium leading-normal">What are the safety guidelines?</p>
+              <div class="text-white group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#96c5a9] text-sm font-normal leading-normal pb-2">The rental includes the ATV, helmet, and a guided tour of Sembalun.</p>
+          </details>
+          <details class="flex flex-col rounded-lg border border-[#366348] bg-[#122118] px-[15px] py-[7px] group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-white text-sm font-medium leading-normal">How to book an ATV?</p>
+              <div class="text-white group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#96c5a9] text-sm font-normal leading-normal pb-2">The rental includes the ATV, helmet, and a guided tour of Sembalun.</p>
+          </details>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Contact Us</h2>
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+          <label class="flex flex-col min-w-40 flex-1">
+            <input
+              placeholder="Your Name"
+              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] h-14 placeholder:text-[#96c5a9] p-[15px] text-base font-normal leading-normal"
+              value=""
+            />
+          </label>
+        </div>
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+          <label class="flex flex-col min-w-40 flex-1">
+            <input
+              placeholder="Your Email"
+              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] h-14 placeholder:text-[#96c5a9] p-[15px] text-base font-normal leading-normal"
+              value=""
+            />
+          </label>
+        </div>
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+          <label class="flex flex-col min-w-40 flex-1">
+            <textarea
+              placeholder="Your Message"
+              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] min-h-36 placeholder:text-[#96c5a9] p-[15px] text-base font-normal leading-normal"
+            ></textarea>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="flex px-4 py-3 justify-end">
+          <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Send</span>
+          </button>
+        </div>
+        <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+          <p class="text-[#96c5a9] text-base font-normal leading-normal">@2024 Sembalun ATV. All rights reserved.</p>
+        </footer>
+        <div class="h-5 bg-[#122118]"></div>
+      </div>
     </div>
-</section>
-
-<section id="gallery" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">Galeri</h2>
-    <div class="grid gap-4 md:grid-cols-3">
-        <img src="https://images.unsplash.com/photo-1615473992474-f0ffdf97eb7e" class="rounded shadow">
-        <img src="https://images.unsplash.com/photo-1615462213503-bfcb09ffbe61" class="rounded shadow">
-        <img src="https://images.unsplash.com/photo-1589396975552-bdc5c0be1a3e" class="rounded shadow">
-    </div>
-</section>
-
-<section id="testimoni" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">Testimoni</h2>
-    <div class="grid gap-6 md:grid-cols-2">
-        <div class="bg-white p-6 rounded shadow">
-            <p>"ATVnya mantap banget! Medannya keren dan pemandangannya luar biasa."</p>
-            <p class="text-yellow-400">★★★★★</p>
-            <p class="mt-2 text-sm">— Dedi, Mataram</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow">
-            <p>"Bookingnya cepat, staffnya ramah, dan pengalaman tak terlupakan."</p>
-            <p class="text-yellow-400">★★★★☆</p>
-            <p class="mt-2 text-sm">— Rika, Lombok</p>
-        </div>
-    </div>
-</section>
-
-<section id="chart" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">Statistik Penyewaan</h2>
-    <canvas id="chartAtv" class="w-full max-w-2xl mx-auto"></canvas>
-</section>
-
-<section id="faq" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">FAQ</h2>
-    <div class="space-y-4">
-        <details class="bg-white p-4 rounded shadow">
-            <summary class="font-semibold">Apakah perlu SIM untuk menyewa?</summary>
-            <p class="mt-2 text-sm">Tidak wajib, namun usia minimal penyewa adalah 17 tahun.</p>
-        </details>
-        <details class="bg-white p-4 rounded shadow">
-            <summary class="font-semibold">Apakah bisa booking via WhatsApp?</summary>
-            <p class="mt-2 text-sm">Ya, semua booking dilakukan melalui tombol pesan WhatsApp yang tersedia.</p>
-        </details>
-    </div>
-</section>
-
-<section id="contact" class="py-12">
-    <h2 class="text-3xl font-bold text-center mb-6">Kontak Kami</h2>
-    <div class="max-w-xl mx-auto">
-        <form id="contact-form" class="bg-white p-6 rounded shadow">
-            <input type="text" placeholder="Nama" class="w-full p-2 mb-4 border rounded">
-            <input type="email" placeholder="Email" class="w-full p-2 mb-4 border rounded">
-            <textarea placeholder="Pesan" class="w-full p-2 mb-4 border rounded"></textarea>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">Kirim</button>
-        </form>
-    </div>
-</section>
-
-</main><footer class="bg-gray-900 text-white text-center py-6 mt-12">
-    <p>&copy; 2025 Penyewaan ATV Sembalun. Dibuat dengan ❤️ oleh Tim Web.</p>
-</footer><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>
-    AOS.init();
-    document.getElementById("toggleDark").addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-    });
-
-    const form = document.getElementById("contact-form");
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Pesanmu telah terkirim! Kami akan menghubungi secepatnya.");
-        form.reset();
-    });
-
-    const ctx = document.getElementById('chartAtv');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['ATV 150cc', 'ATV 250cc', 'ATV Family'],
-            datasets: [{
-                label: 'Jumlah Sewa Bulanan',
-                data: [12, 19, 7],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script></body></html>
+  </body>
+</html>
