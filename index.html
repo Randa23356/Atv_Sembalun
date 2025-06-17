@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penyewaan ATV Sembalun</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-enter { opacity: 0; transform: translateY(10px); }
+    .fade-enter-active { opacity: 1; transform: translateY(0); transition: all 0.4s ease-in-out; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans" x-data="atvApp()" x-init="init()">
+  <header class="bg-gradient-to-r from-green-700 to-lime-600 text-white shadow-md p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold tracking-widest">ATV Sembalun</h1>
+      <nav class="space-x-4">
+        <a href="#paket" class="hover:underline">Paket</a>
+        <a href="#galeri" class="hover:underline">Galeri</a>
+        <a href="#testimoni" class="hover:underline">Testimoni</a>
+        <a href="#jadwal" class="hover:underline">Jadwal</a>
+        <a href="#kontak" class="hover:underline">Kontak</a>
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#map" class="hover:underline">Lokasi</a>
+      </nav>
+    </div>
+  </header>  <main class="p-6 max-w-6xl mx-auto space-y-12">
+    <section class="text-center py-12">
+      <h2 class="text-4xl font-extrabold mb-4">Jelajahi Sembalun dengan ATV</h2>
+      <p class="text-lg text-gray-600 mb-6">Sensasi berkendara menyusuri alam Sembalun</p>
+      <a href="#paket" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition">Lihat Paket</a>
+    </section><section class="text-center" id="search">
+  <input type="text" placeholder="Cari paket..." x-model="searchTerm" class="px-4 py-2 border rounded w-full md:w-1/3 mb-4">
+</section>
+
+<section>
+  <h2 class="text-2xl font-bold mb-4 text-center">Filter Jenis ATV</h2>
+  <div class="flex justify-center space-x-4 flex-wrap">
+    <button class="px-4 py-2 bg-gray-200 rounded mb-2" @click="filterKategori = 'all'">Semua</button>
+    <button class="px-4 py-2 bg-gray-200 rounded mb-2" @click="filterKategori = 'short'">Singkat</button>
+    <button class="px-4 py-2 bg-gray-200 rounded mb-2" @click="filterKategori = 'medium'">Sedang</button>
+    <button class="px-4 py-2 bg-gray-200 rounded mb-2" @click="filterKategori = 'extreme'">Ekstrem</button>
+  </div>
+</section>
+
+<section id="paket">
+  <h2 class="text-3xl font-semibold text-center mb-6">Paket ATV</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <template x-for="paket in paketList.filter(p => (filterKategori === 'all' || p.kategori === filterKategori) && p.nama.toLowerCase().includes(searchTerm.toLowerCase()))" :key="paket.id">
+      <div class="p-4 border rounded-lg shadow hover:shadow-lg transition bg-white">
+        <img :src="paket.img" alt="Gambar ATV" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-bold mb-2" x-text="paket.nama"></h3>
+        <p class="text-gray-600 mb-2" x-text="paket.deskripsi"></p>
+        <ul class="list-disc list-inside text-sm text-gray-500 mb-2">
+          <template x-for="fitur in paket.fitur" :key="fitur">
+            <li x-text="fitur"></li>
+          </template>
+        </ul>
+        <span class="block font-semibold text-green-700 mb-2" x-text="'Rp ' + paket.harga.toLocaleString()"></span>
+        <a :href="'https://wa.me/6281234567890?text=Saya ingin memesan ' + encodeURIComponent(paket.nama)" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition block text-center">Pesan via WhatsApp</a>
+      </div>
+    </template>
+  </div>
+</section>
+
+<section id="galeri">
+  <h2 class="text-3xl font-semibold text-center mb-6">Galeri</h2>
+  <div class="grid md:grid-cols-3 gap-4">
+    <template x-for="img in galeri" :key="img">
+      <img :src="img" class="w-full h-60 object-cover rounded shadow-md hover:scale-105 transition" loading="lazy">
+    </template>
+  </div>
+</section>
+
+<section id="testimoni">
+  <h2 class="text-3xl font-semibold text-center mb-6">Testimoni</h2>
+  <div class="bg-gray-100 rounded-lg p-6 max-w-xl mx-auto text-center text-lg italic text-gray-800" x-text="testimoniAktif"></div>
+</section>
+
+<section id="jadwal">
+  <h2 class="text-3xl font-semibold text-center mb-6">Jadwal Perjalanan</h2>
+  <table class="table-auto w-full text-left border border-gray-300">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="p-2 border">Jam</th>
+        <th class="p-2 border">Rute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <template x-for="jadwal in jadwalList" :key="jadwal.jam">
+        <tr>
+          <td class="p-2 border" x-text="jadwal.jam"></td>
+          <td class="p-2 border" x-text="jadwal.rute"></td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</section>
+
+<section id="kontak">
+  <h2 class="text-3xl font-semibold text-center mb-6">Kontak Kami</h2>
+  <form class="max-w-xl mx-auto space-y-4" @submit.prevent="submitForm">
+    <input type="text" placeholder="Nama" x-model="form.nama" required class="w-full p-3 border rounded">
+    <input type="email" placeholder="Email" x-model="form.email" required class="w-full p-3 border rounded">
+    <textarea placeholder="Pesan" x-model="form.pesan" required class="w-full p-3 border rounded"></textarea>
+    <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition">Kirim Pesan</button>
+    <p x-show="notifikasi" class="text-green-600 font-semibold mt-2">Pesan berhasil dikirim!</p>
+  </form>
+</section>
+
+<section id="faq">
+  <h2 class="text-3xl font-semibold text-center mb-6">Pertanyaan Umum (FAQ)</h2>
+  <div class="max-w-2xl mx-auto space-y-4">
+    <template x-for="(faq, index) in faqList" :key="index">
+      <div class="border p-4 rounded shadow">
+        <h3 class="font-semibold" x-text="faq.q"></h3>
+        <p class="text-gray-600 mt-1" x-text="faq.a"></p>
+      </div>
+    </template>
+  </div>
+</section>
+
+<section id="map">
+  <h2 class="text-3xl font-semibold text-center mb-6">Lokasi</h2>
+  <div class="w-full h-96">
+    <iframe class="w-full h-full rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.3956527742453!2d116.54059177578466!3d-8.660307791391582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbfbdd4aa55c1%3A0x23ed4f0bd8c67d57!2sSembalun!5e0!3m2!1sen!2sid!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+  </main>  <footer class="bg-gray-100 text-center text-sm text-gray-600 py-6">
+    &copy; 2025 Penyewaan ATV Sembalun. Dibuat dengan ❤️ oleh Andong.
+  </footer>  <script>
+    function atvApp() {
+      return {
+        paketList: [
+          { id: 1, nama: 'ATV Singkat', kategori: 'short', deskripsi: '30 menit di sekitar desa', harga: 150000, fitur: ['Pendamping Lokal', 'Helm'], img: 'https://source.unsplash.com/400x300/?atv' },
+          { id: 2, nama: 'ATV Medium', kategori: 'medium', deskripsi: '1 jam ke kebun dan hutan', harga: 250000, fitur: ['Pendamping', 'Helm', 'Spot Foto Gratis'], img: 'https://source.unsplash.com/400x300/?quadbike' },
+          { id: 3, nama: 'ATV Extreme', kategori: 'extreme', deskripsi: '2 jam trek terjal dan air terjun', harga: 400000, fitur: ['Helm', 'Jaket', 'Air Mineral'], img: 'https://source.unsplash.com/400x300/?offroad,adventure' },
+        ],
+        galeri: [
+          'https://source.unsplash.com/600x400/?atv,adventure',
+          'https://source.unsplash.com/600x400/?mountain,riding',
+          'https://source.unsplash.com/600x400/?offroad,nature'
+        ],
+        jadwalList: [
+          { jam: '08:00 - 09:00', rute: 'Taman Sembalun - Ladang Bawang' },
+          { jam: '09:00 - 10:30', rute: 'Ladang - Bukit Selong' },
+          { jam: '11:00 - 12:30', rute: 'Kaki Rinjani - Air Terjun Mangku Sakti' }
+        ],
+        testimoniAktif: '',
+        testimoniList: [
+          '“Petualangan tak terlupakan di Sembalun!”',
+          '“Service bagus, pemandangan luar biasa.”',
+          '“Rekomendasi banget buat yang suka tantangan!”'
+        ],
+        form: { nama: '', email: '', pesan: '' },
+        notifikasi: false,
+        filterKategori: 'all',
+        searchTerm: '',
+        faqList: [
+          { q: 'Apakah ATV cocok untuk pemula?', a: 'Sangat cocok! Kami memberikan instruksi dan pendampingan.' },
+          { q: 'Apakah tersedia helm dan perlengkapan?', a: 'Ya, semua paket sudah termasuk helm dan pengaman lainnya.' },
+          { q: 'Bagaimana cara booking?', a: 'Gunakan tombol WhatsApp di tiap paket untuk langsung pesan.' }
+        ],
+        init() {
+          let index = 0;
+          this.testimoniAktif = this.testimoniList[index];
+          setInterval(() => {
+            index = (index + 1) % this.testimoniList.length;
+            this.testimoniAktif = this.testimoniList[index];
+          }, 4000);
+        },
+        submitForm() {
+          this.notifikasi = true;
+          setTimeout(() => this.notifikasi = false, 3000);
+          this.form = { nama: '', email: '', pesan: '' };
+        }
+      }
+    }
+  </script></body>
+</html>
